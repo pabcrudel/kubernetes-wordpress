@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql ## DNS name (cluster internal)
+  labels:
+    app: my-db
+spec:
+  type: ClusterIP
+  selector:
+    app: my-db # MySQL deployment label
+  ports: # Service Ports
+  - name: http
+    port: 3306
+    targetPort: 3306
+  - name: mysql
+    port: 33060
+    targetPort: 33060
